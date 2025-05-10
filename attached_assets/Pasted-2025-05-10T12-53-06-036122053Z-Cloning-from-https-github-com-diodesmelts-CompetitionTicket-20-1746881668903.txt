@@ -1,0 +1,53 @@
+2025-05-10T12:53:06.036122053Z ==> Cloning from https://github.com/diodesmelts/CompetitionTicket
+2025-05-10T12:53:06.629407929Z ==> Checking out commit 633fa4374cd69fef23a49a6ca1678915d103bd89 in branch main
+2025-05-10T12:53:07.740441409Z ==> Downloading cache...
+2025-05-10T12:53:20.109010543Z ==> Transferred 165MB in 8s. Extraction took 4s.
+2025-05-10T12:53:26.342364244Z ==> Using Node.js version 20.14.0 via /opt/render/project/src/.node-version
+2025-05-10T12:53:26.371409005Z ==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+2025-05-10T12:53:26.519633734Z ==> Using Bun version 1.1.0 (default)
+2025-05-10T12:53:26.519663075Z ==> Docs on specifying a bun version: https://render.com/docs/bun-version
+2025-05-10T12:53:26.57077117Z ==> Running build command 'npm install && cd client && npm install && npm run build --skipTypeCheck && mkdir -p ../server/public && cp -r dist/* ../server/public/ || mkdir -p ../server/public && echo '<!DOCTYPE html><html><head><title>Competition Ticket</title></head><body><h1>Site Loading...</h1><p>Please wait while we set up the application.</p></body></html>' > ../server/public/index.html'...
+2025-05-10T12:53:27.636913745Z 
+2025-05-10T12:53:27.636944106Z changed 1 package, and audited 376 packages in 994ms
+2025-05-10T12:53:27.636954606Z 
+2025-05-10T12:53:27.636963276Z 52 packages are looking for funding
+2025-05-10T12:53:27.636967006Z   run `npm fund` for details
+2025-05-10T12:53:27.637996539Z 
+2025-05-10T12:53:27.63800861Z found 0 vulnerabilities
+2025-05-10T12:53:27.979891036Z 
+2025-05-10T12:53:27.979914966Z up to date, audited 1 package in 270ms
+2025-05-10T12:53:27.981085433Z 
+2025-05-10T12:53:27.981100703Z found 0 vulnerabilities
+2025-05-10T12:53:28.136331539Z 
+2025-05-10T12:53:28.13635363Z > competition-ticket-client@0.0.0 build
+2025-05-10T12:53:28.13635743Z > tsc && vite build
+2025-05-10T12:53:28.13635955Z 
+2025-05-10T12:53:31.068463792Z error TS2688: Cannot find type definition file for 'vite/client'.
+2025-05-10T12:53:31.068490293Z   The file is in the program because:
+2025-05-10T12:53:31.068497223Z     Entry point of type library 'vite/client' specified in compilerOptions
+2025-05-10T12:53:32.295741336Z ==> Uploading build...
+2025-05-10T12:53:47.086011065Z ==> Uploaded in 4.0s. Compression took 10.8s
+2025-05-10T12:53:47.110872382Z ==> Build successful 🎉
+2025-05-10T12:53:50.490155981Z ==> Deploying...
+2025-05-10T12:54:00.388275262Z ==> Running 'cd server && NODE_ENV=production npx ts-node index.ts'
+2025-05-10T12:54:04.345888467Z TypeError: Unknown file extension ".ts" for /opt/render/project/src/server/index.ts
+2025-05-10T12:54:04.345909738Z     at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:160:9)
+2025-05-10T12:54:04.345912538Z     at defaultGetFormat (node:internal/modules/esm/get_format:203:36)
+2025-05-10T12:54:04.345915279Z     at defaultLoad (node:internal/modules/esm/load:143:22)
+2025-05-10T12:54:04.345917699Z     at async ModuleLoader.load (node:internal/modules/esm/loader:396:7)
+2025-05-10T12:54:04.345919649Z     at async ModuleLoader.moduleProvider (node:internal/modules/esm/loader:278:45)
+2025-05-10T12:54:04.345921509Z     at async link (node:internal/modules/esm/module_job:78:21) {
+2025-05-10T12:54:04.345924009Z   code: 'ERR_UNKNOWN_FILE_EXTENSION'
+2025-05-10T12:54:04.345925939Z }
+2025-05-10T12:54:08.166562122Z ==> Exited with status 1
+2025-05-10T12:54:08.319315664Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+2025-05-10T12:54:08.448053945Z ==> Running 'cd server && NODE_ENV=production npx ts-node index.ts'
+2025-05-10T12:54:12.067595662Z TypeError: Unknown file extension ".ts" for /opt/render/project/src/server/index.ts
+2025-05-10T12:54:12.067614303Z     at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:160:9)
+2025-05-10T12:54:12.067618034Z     at defaultGetFormat (node:internal/modules/esm/get_format:203:36)
+2025-05-10T12:54:12.067620864Z     at defaultLoad (node:internal/modules/esm/load:143:22)
+2025-05-10T12:54:12.067623254Z     at async ModuleLoader.load (node:internal/modules/esm/loader:396:7)
+2025-05-10T12:54:12.067626034Z     at async ModuleLoader.moduleProvider (node:internal/modules/esm/loader:278:45)
+2025-05-10T12:54:12.067628404Z     at async link (node:internal/modules/esm/module_job:78:21) {
+2025-05-10T12:54:12.067631365Z   code: 'ERR_UNKNOWN_FILE_EXTENSION'
+2025-05-10T12:54:12.067633975Z }
