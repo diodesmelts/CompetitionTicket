@@ -5,11 +5,13 @@
 npm install
 
 # Build the frontend
-npx vite build
+echo "Building frontend..."
 
-# Save the frontend build to a temporary location
-mkdir -p temp_frontend
-cp -r dist/* temp_frontend/ 2>/dev/null || :
+# Create dist directory structure first
+mkdir -p dist/assets
+
+# Build frontend directly into the assets directory
+npx vite build --outDir dist/assets
 
 # Create a production-ready version of the server
 echo "Creating production server build..."
@@ -22,6 +24,7 @@ cat > dist/server.js << 'EOF'
 // Production server file - ES Modules syntax
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
 import { createServer } from 'http';
 import session from 'express-session';
 import { Pool } from '@neondatabase/serverless';
@@ -73,14 +76,24 @@ app.use(session({
 }));
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, './assets')));
+const assetsPath = path.join(__dirname, 'assets');
+app.use(express.static(assetsPath));
+console.log(`Serving static files from: ${assetsPath}`);
 
 // Register API routes
 const server = await registerRoutes(app);
 
 // Send React's index.html for any other request
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './assets/index.html'));
+  const indexPath = path.join(__dirname, 'assets', 'index.html');
+  console.log(`Serving index.html from: ${indexPath}`);
+  if (!fs.existsSync(indexPath)) {
+    return res.status(500).json({ 
+      error: "Internal Server Error", 
+      message: `index.html not found at ${indexPath}` 
+    });
+  }
+  res.sendFile(indexPath);
 });
 
 // Error handling middleware
@@ -569,10 +582,12 @@ if [ "$NODE_ENV" != "production" ]; then
   npx tsx server/seed.ts || echo "Error seeding database: $?"
 fi
 
-# Create assets directory and move the frontend build there
-mkdir -p dist/assets
-cp -r temp_frontend/* dist/assets/ 2>/dev/null || :
-rm -rf temp_frontend
+# Verify frontend build is in place
+echo "Verifying frontend build..."
+if [ ! -f "dist/assets/index.html" ]; then
+  echo "ERROR: Frontend build failed - index.html not found in dist/assets/"
+  exit 1
+fi
 
 # List the contents of the dist directory for verification
 echo "Contents of dist directory:"
@@ -581,6 +596,10 @@ echo "Contents of dist/server directory:"
 ls -la dist/server/
 echo "Contents of dist/assets directory:"
 ls -la dist/assets/
+
+# Show the first few files in the assets directory to verify the build
+echo "Frontend files in dist/assets:"
+find dist/assets -type f -not -path "*/\.*" | sort | head -10
 
 # Exit with success
 echo "Build completed successfully with database setup!"
