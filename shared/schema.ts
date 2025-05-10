@@ -2,6 +2,13 @@ import { pgTable, text, serial, integer, decimal, timestamp, boolean } from "dri
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
+// Session table for connect-pg-simple
+export const session = pgTable("session", {
+  sid: text("sid").primaryKey(),
+  sess: text("sess").notNull(),
+  expire: timestamp("expire").notNull(),
+});
+
 export const competitions = pgTable("competitions", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
