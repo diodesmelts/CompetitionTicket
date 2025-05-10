@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: competition-ticket
+    env: node
+    buildCommand: "./build-render.sh build"
+    startCommand: "./build-render.sh start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: VITE_STRIPE_PUBLIC_KEY
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
