@@ -1,0 +1,150 @@
+2025-05-10T12:06:30.800469919Z - /opt/render/.cache/_npx/7c7555b0b81cc7e0/node_modules/drizzle-kit/bin.cjs
+2025-05-10T12:06:32.710397832Z 🌱 Seeding database...
+2025-05-10T12:06:32.746795613Z Error seeding database: ErrorEvent {
+2025-05-10T12:06:32.746815773Z   [Symbol(kTarget)]: WebSocket {
+2025-05-10T12:06:32.746821973Z     _events: [Object: null prototype] {
+2025-05-10T12:06:32.746827624Z       error: [Function],
+2025-05-10T12:06:32.746832574Z       message: [Function],
+2025-05-10T12:06:32.746837444Z       close: [Function],
+2025-05-10T12:06:32.746841924Z       open: [Function]
+2025-05-10T12:06:32.746846324Z     },
+2025-05-10T12:06:32.746850864Z     _eventsCount: 4,
+2025-05-10T12:06:32.746855364Z     _maxListeners: undefined,
+2025-05-10T12:06:32.746859965Z     _binaryType: 'arraybuffer',
+2025-05-10T12:06:32.746864485Z     _closeCode: 1006,
+2025-05-10T12:06:32.746868985Z     _closeFrameReceived: false,
+2025-05-10T12:06:32.746873525Z     _closeFrameSent: false,
+2025-05-10T12:06:32.746897515Z     _closeMessage: <Buffer >,
+2025-05-10T12:06:32.746900415Z     _closeTimer: null,
+2025-05-10T12:06:32.746902786Z     _errorEmitted: true,
+2025-05-10T12:06:32.746905146Z     _extensions: {},
+2025-05-10T12:06:32.746907546Z     _paused: false,
+2025-05-10T12:06:32.746909896Z     _protocol: '',
+2025-05-10T12:06:32.746912276Z     _readyState: 3,
+2025-05-10T12:06:32.746914866Z     _receiver: null,
+2025-05-10T12:06:32.746917296Z     _sender: null,
+2025-05-10T12:06:32.746919656Z     _socket: null,
+2025-05-10T12:06:32.746922066Z     _bufferedAmount: 0,
+2025-05-10T12:06:32.746924406Z     _isServer: false,
+2025-05-10T12:06:32.746926776Z     _redirects: 0,
+2025-05-10T12:06:32.746929226Z     _autoPong: true,
+2025-05-10T12:06:32.746931616Z     _url: 'wss://dpg-d0fjsn2dbo4c73ahnf2g-a/v2',
+2025-05-10T12:06:32.746934076Z     _req: null,
+2025-05-10T12:06:32.746936476Z     [Symbol(shapeMode)]: false,
+2025-05-10T12:06:32.746938847Z     [Symbol(kCapture)]: false
+2025-05-10T12:06:32.746941207Z   },
+2025-05-10T12:06:32.746943627Z   [Symbol(kType)]: 'error',
+2025-05-10T12:06:32.746947227Z   [Symbol(kError)]: Error: connect ECONNREFUSED 10.202.171.247:443
+2025-05-10T12:06:32.746949687Z       at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1634:16) {
+2025-05-10T12:06:32.746952087Z     errno: -111,
+2025-05-10T12:06:32.746954507Z     code: 'ECONNREFUSED',
+2025-05-10T12:06:32.746956937Z     syscall: 'connect',
+2025-05-10T12:06:32.746959327Z     address: '10.202.171.247',
+2025-05-10T12:06:32.746961757Z     port: 443
+2025-05-10T12:06:32.746964167Z   },
+2025-05-10T12:06:32.746967317Z   [Symbol(kMessage)]: 'connect ECONNREFUSED 10.202.171.247:443'
+2025-05-10T12:06:32.746969747Z }
+2025-05-10T12:06:32.783334267Z Contents of dist directory:
+2025-05-10T12:06:32.788198598Z total 12
+2025-05-10T12:06:32.788218748Z drwxr-sr-x  2 render render 4096 May 10 12:06 .
+2025-05-10T12:06:32.788221308Z drwxr-sr-x 11 render render 4096 May 10 12:06 ..
+2025-05-10T12:06:32.788223848Z -rw-r--r--  1 render render 1854 May 10 12:06 server.js
+2025-05-10T12:06:32.788385632Z Build completed successfully with database setup!
+2025-05-10T12:06:34.994171168Z ==> Uploading build...
+2025-05-10T12:06:42.209992365Z ==> Uploaded in 4.5s. Compression took 2.7s
+2025-05-10T12:06:42.236061691Z ==> Build successful 🎉
+2025-05-10T12:06:45.044473915Z ==> Deploying...
+2025-05-10T12:06:55.086941756Z ==> Running './start.sh'
+2025-05-10T12:06:55.093671116Z Current directory: /opt/render/project/src
+2025-05-10T12:06:55.093684167Z Files in current directory:
+2025-05-10T12:06:55.097573825Z total 1280
+2025-05-10T12:06:55.097599666Z drwxr-sr-x  11 render render   4096 May 10 12:06 .
+2025-05-10T12:06:55.097602826Z drwxr-sr-x   4 render render   4096 May 10 12:06 ..
+2025-05-10T12:06:55.097605706Z drwxr-sr-x   8 render render   4096 May 10 12:06 .git
+2025-05-10T12:06:55.097608076Z -rw-r--r--   1 render render     67 May 10 12:06 .gitignore
+2025-05-10T12:06:55.097610356Z -rw-r--r--   1 render render    676 May 10 12:06 .replit
+2025-05-10T12:06:55.097612836Z drwxr-sr-x   2 render render   4096 May 10 12:06 attached_assets
+2025-05-10T12:06:55.097615286Z -rwxr-xr-x   1 render render   2534 May 10 12:06 build.sh
+2025-05-10T12:06:55.097617806Z drwxr-sr-x   3 render render   4096 May 10 12:06 client
+2025-05-10T12:06:55.097619816Z -rw-r--r--   1 render render    459 May 10 12:06 components.json
+2025-05-10T12:06:55.097622056Z drwxr-sr-x   2 render render   4096 May 10 12:06 dist
+2025-05-10T12:06:55.097625416Z -rw-r--r--   1 render render    325 May 10 12:06 drizzle.config.ts
+2025-05-10T12:06:55.097628277Z -rw-r--r--   1 render render 888454 May 10 12:06 generated-icon.png
+2025-05-10T12:06:55.097630547Z drwxr-sr-x   3 render render   4096 May 10 12:06 migrations
+2025-05-10T12:06:55.097633057Z drwxr-sr-x 278 render render  12288 May 10 12:06 node_modules
+2025-05-10T12:06:55.097635087Z -rw-r--r--   1 render render 321927 May 10 12:06 package-lock.json
+2025-05-10T12:06:55.097637727Z -rw-r--r--   1 render render   3636 May 10 12:06 package.json
+2025-05-10T12:06:55.097640277Z -rw-r--r--   1 render render     80 May 10 12:06 postcss.config.js
+2025-05-10T12:06:55.097642537Z drwxr-sr-x   2 render render   4096 May 10 12:06 server
+2025-05-10T12:06:55.097644847Z drwxr-sr-x   2 render render   4096 May 10 12:06 shared
+2025-05-10T12:06:55.097647367Z -rwxr-xr-x   1 render render    852 May 10 12:06 start.sh
+2025-05-10T12:06:55.097649737Z -rw-r--r--   1 render render   2787 May 10 12:06 tailwind.config.ts
+2025-05-10T12:06:55.097652287Z -rw-r--r--   1 render render    657 May 10 12:06 tsconfig.json
+2025-05-10T12:06:55.097654657Z drwxr-sr-x   2 render render   4096 May 10 12:06 types
+2025-05-10T12:06:55.097657087Z -rw-r--r--   1 render render    894 May 10 12:06 vite.config.ts
+2025-05-10T12:06:55.09777452Z Files in dist directory:
+2025-05-10T12:06:55.099235207Z total 12
+2025-05-10T12:06:55.099243357Z drwxr-sr-x  2 render render 4096 May 10 12:06 .
+2025-05-10T12:06:55.099245968Z drwxr-sr-x 11 render render 4096 May 10 12:06 ..
+2025-05-10T12:06:55.099248408Z -rw-r--r--  1 render render 1854 May 10 12:06 server.js
+2025-05-10T12:06:55.099414122Z Using PORT: 10000
+2025-05-10T12:06:55.128189271Z file:///opt/render/project/src/dist/server.js:2
+2025-05-10T12:06:55.128205731Z const express = require('express');
+2025-05-10T12:06:55.128208502Z                 ^
+2025-05-10T12:06:55.128211091Z 
+2025-05-10T12:06:55.128213882Z ReferenceError: require is not defined in ES module scope, you can use import instead
+2025-05-10T12:06:55.128217312Z This file is being treated as an ES module because it has a '.js' file extension and '/opt/render/project/src/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+2025-05-10T12:06:55.128221122Z     at file:///opt/render/project/src/dist/server.js:2:17
+2025-05-10T12:06:55.128224512Z     at ModuleJob.run (node:internal/modules/esm/module_job:271:25)
+2025-05-10T12:06:55.128227442Z     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:578:26)
+2025-05-10T12:06:55.128241032Z     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-05-10T12:06:55.128243342Z 
+2025-05-10T12:06:55.128245722Z Node.js v22.14.0
+2025-05-10T12:06:59.427033309Z ==> Exited with status 1
+2025-05-10T12:06:59.577628302Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+2025-05-10T12:06:59.647236107Z ==> Running './start.sh'
+2025-05-10T12:06:59.653184658Z Current directory: /opt/render/project/src
+2025-05-10T12:06:59.653199478Z Files in current directory:
+2025-05-10T12:06:59.654943833Z total 1280
+2025-05-10T12:06:59.654964593Z drwxr-sr-x  11 render render   4096 May 10 12:06 .
+2025-05-10T12:06:59.654967843Z drwxr-sr-x   4 render render   4096 May 10 12:06 ..
+2025-05-10T12:06:59.654970363Z drwxr-sr-x   8 render render   4096 May 10 12:06 .git
+2025-05-10T12:06:59.654972943Z -rw-r--r--   1 render render     67 May 10 12:06 .gitignore
+2025-05-10T12:06:59.654975543Z -rw-r--r--   1 render render    676 May 10 12:06 .replit
+2025-05-10T12:06:59.654978054Z drwxr-sr-x   2 render render   4096 May 10 12:06 attached_assets
+2025-05-10T12:06:59.654980364Z -rwxr-xr-x   1 render render   2534 May 10 12:06 build.sh
+2025-05-10T12:06:59.654981944Z drwxr-sr-x   3 render render   4096 May 10 12:06 client
+2025-05-10T12:06:59.654983464Z -rw-r--r--   1 render render    459 May 10 12:06 components.json
+2025-05-10T12:06:59.654985024Z drwxr-sr-x   2 render render   4096 May 10 12:06 dist
+2025-05-10T12:06:59.654987664Z -rw-r--r--   1 render render    325 May 10 12:06 drizzle.config.ts
+2025-05-10T12:06:59.654990594Z -rw-r--r--   1 render render 888454 May 10 12:06 generated-icon.png
+2025-05-10T12:06:59.654993244Z drwxr-sr-x   3 render render   4096 May 10 12:06 migrations
+2025-05-10T12:06:59.654996244Z drwxr-sr-x 278 render render  12288 May 10 12:06 node_modules
+2025-05-10T12:06:59.654998654Z -rw-r--r--   1 render render 321927 May 10 12:06 package-lock.json
+2025-05-10T12:06:59.655001384Z -rw-r--r--   1 render render   3636 May 10 12:06 package.json
+2025-05-10T12:06:59.655003684Z -rw-r--r--   1 render render     80 May 10 12:06 postcss.config.js
+2025-05-10T12:06:59.655006164Z drwxr-sr-x   2 render render   4096 May 10 12:06 server
+2025-05-10T12:06:59.655008684Z drwxr-sr-x   2 render render   4096 May 10 12:06 shared
+2025-05-10T12:06:59.655010544Z -rwxr-xr-x   1 render render    852 May 10 12:06 start.sh
+2025-05-10T12:06:59.655012124Z -rw-r--r--   1 render render   2787 May 10 12:06 tailwind.config.ts
+2025-05-10T12:06:59.655013704Z -rw-r--r--   1 render render    657 May 10 12:06 tsconfig.json
+2025-05-10T12:06:59.655015255Z drwxr-sr-x   2 render render   4096 May 10 12:06 types
+2025-05-10T12:06:59.655016765Z -rw-r--r--   1 render render    894 May 10 12:06 vite.config.ts
+2025-05-10T12:06:59.655128558Z Files in dist directory:
+2025-05-10T12:06:59.656531443Z total 12
+2025-05-10T12:06:59.656541383Z drwxr-sr-x  2 render render 4096 May 10 12:06 .
+2025-05-10T12:06:59.656543503Z drwxr-sr-x 11 render render 4096 May 10 12:06 ..
+2025-05-10T12:06:59.656545433Z -rw-r--r--  1 render render 1854 May 10 12:06 server.js
+2025-05-10T12:06:59.656768309Z Using PORT: 10000
+2025-05-10T12:06:59.68248163Z file:///opt/render/project/src/dist/server.js:2
+2025-05-10T12:06:59.682510331Z const express = require('express');
+2025-05-10T12:06:59.682513781Z                 ^
+2025-05-10T12:06:59.682515821Z 
+2025-05-10T12:06:59.682517901Z ReferenceError: require is not defined in ES module scope, you can use import instead
+2025-05-10T12:06:59.682522861Z This file is being treated as an ES module because it has a '.js' file extension and '/opt/render/project/src/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+2025-05-10T12:06:59.682527952Z     at file:///opt/render/project/src/dist/server.js:2:17
+2025-05-10T12:06:59.682531342Z     at ModuleJob.run (node:internal/modules/esm/module_job:271:25)
+2025-05-10T12:06:59.682533622Z     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:578:26)
+2025-05-10T12:06:59.682546152Z     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-05-10T12:06:59.682548632Z 
+2025-05-10T12:06:59.682551092Z Node.js v22.14.0

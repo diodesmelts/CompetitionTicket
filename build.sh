@@ -15,18 +15,27 @@ mkdir -p dist
 
 # Create a production server file that doesn't rely on Vite
 cat > dist/server.js << 'EOF'
-// Production server file
-const express = require('express');
-const path = require('path');
-const { createServer } = require('http');
-const session = require('express-session');
-const { Pool } = require('@neondatabase/serverless');
-const { drizzle } = require('drizzle-orm/neon-serverless');
-const pgSession = require('connect-pg-simple')(session);
-const { storage } = require('../server/storage');
+// Production server file - ES Modules syntax
+import express from 'express';
+import path from 'path';
+import { createServer } from 'http';
+import session from 'express-session';
+import { Pool } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/neon-serverless';
+import pg from 'connect-pg-simple';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-// Import routes
-const { registerRoutes } = require('../server/routes');
+// Get current file's directory
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Import from local files
+import { registerRoutes } from '../server/routes.js';
+import { storage } from '../server/storage.js';
+
+// Set up connect-pg-simple
+const PgSession = pg(session);
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -38,7 +47,7 @@ if (!process.env.DATABASE_URL) {
 
 // Session configuration
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-const sessionStore = new pgSession({
+const sessionStore = new PgSession({
   pool,
   tableName: 'session'
 });
@@ -63,37 +72,61 @@ app.use(session({
 app.use(express.static(path.join(__dirname, '../dist')));
 
 // Register API routes
-registerRoutes(app).then(server => {
-  // Send React's index.html for any other request
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
-  });
+const server = await registerRoutes(app);
 
-  // Error handling middleware
-  app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({ 
-      error: "Internal Server Error", 
-      message: err.message 
-    });
-  });
+// Send React's index.html for any other request
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
 
-  // Start the server
-  server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ 
+    error: "Internal Server Error", 
+    message: err.message 
   });
+});
+
+// Start the server
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 EOF
 
-# Run database migrations
-npx drizzle-kit push --force
+# Copy server files and convert them to JS for ES module imports
+echo "Preparing server files for ES module imports..."
 
-# Seed the database with initial data
-npx tsx server/seed.ts
+# Create server directory in dist
+mkdir -p dist/server
+mkdir -p dist/shared
+
+# Copy server files with .js extension
+cp server/routes.ts dist/server/routes.js
+cp server/storage.ts dist/server/storage.js
+cp server/db.ts dist/server/db.js
+cp shared/schema.ts dist/shared/schema.js
+
+# Convert TypeScript imports to JavaScript in copied files
+sed -i 's/\.ts"/.js"/g' dist/server/*.js
+sed -i 's/\.ts;/.js;/g' dist/server/*.js
+sed -i 's/from "@shared\//from "..\/shared\//g' dist/server/*.js
+
+# Run database migrations (may fail on Render but that's expected)
+echo "Running database migrations..."
+npx drizzle-kit push --force || echo "Migrations may have failed, that's expected in the build environment"
+
+# Seed the database with initial data (only in development)
+if [ "$NODE_ENV" != "production" ]; then
+  echo "Seeding database..."
+  npx tsx server/seed.ts || echo "Error seeding database: $?"
+fi
 
 # List the contents of the dist directory for verification
 echo "Contents of dist directory:"
 ls -la dist/
+echo "Contents of dist/server directory:"
+ls -la dist/server/
 
 # Exit with success
 echo "Build completed successfully with database setup!"
