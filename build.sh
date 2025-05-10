@@ -7,11 +7,61 @@ npm install
 # Build the frontend
 echo "Building frontend..."
 
-# Create dist directory structure first
+# Run vite build with standard configuration
+npx vite build
+
+# Examine what Vite created
+echo "Vite build output:"
+ls -la dist/
+
+# Create a simple index.html in case Vite's build failed
+echo "Creating fallback index.html..."
 mkdir -p dist/assets
 
-# Build frontend directly into the assets directory
-npx vite build --outDir dist/assets
+# Try writing to the file with multiple methods to ensure it's created
+echo "Method 1: Using cat with heredoc"
+cat > dist/assets/index.html << 'EOF'
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Competition Ticket</title>
+    <style>
+      body { font-family: sans-serif; margin: 0; padding: 20px; text-align: center; }
+      h1 { color: #333; }
+      .container { max-width: 800px; margin: 0 auto; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Competition Ticket</h1>
+      <p>Welcome to our prize competitions platform!</p>
+      <p>The application is starting up. If you continue to see this page, please check the deployment logs.</p>
+    </div>
+  </body>
+</html>
+EOF
+
+# Method 2: Using echo directly
+echo "Method 2: Using echo directly"
+echo '<!DOCTYPE html><html><head><title>Competition Ticket</title></head><body><h1>Competition Ticket</h1><p>Application is starting up...</p></body></html>' > dist/assets/index2.html
+
+# Method 3: Using printf
+echo "Method 3: Using printf"
+printf '<!DOCTYPE html><html><head><title>Competition Ticket</title></head><body><h1>Competition Ticket</h1><p>Application is starting up...</p></body></html>' > dist/assets/index3.html
+
+# Check what files are in the assets directory
+echo "Files in assets directory after creation:"
+ls -la dist/assets/
+
+# Copy Vite's build to assets if it exists
+if [ -f "dist/index.html" ]; then
+  echo "Copying Vite build to assets directory..."
+  cp -r dist/* dist/assets/ 2>/dev/null || echo "Warning: Some files couldn't be copied"
+  # Remove the root level files to avoid confusion
+  find dist -maxdepth 1 -type f -delete
+fi
 
 # Create a production-ready version of the server
 echo "Creating production server build..."
@@ -85,15 +135,70 @@ const server = await registerRoutes(app);
 
 // Send React's index.html for any other request
 app.get('*', (req, res) => {
-  const indexPath = path.join(__dirname, 'assets', 'index.html');
-  console.log(`Serving index.html from: ${indexPath}`);
-  if (!fs.existsSync(indexPath)) {
-    return res.status(500).json({ 
-      error: "Internal Server Error", 
-      message: `index.html not found at ${indexPath}` 
-    });
+  // Try all possible index files in order
+  const possiblePaths = [
+    path.join(__dirname, 'assets', 'index.html'),
+    path.join(__dirname, 'assets', 'index2.html'),
+    path.join(__dirname, 'assets', 'index3.html')
+  ];
+  
+  console.log('Request path:', req.path);
+  console.log('Looking for index files in:', __dirname);
+  
+  // Safely check the contents of the assets directory
+  let assetFiles = [];
+  try {
+    const assetsDir = path.join(__dirname, 'assets');
+    console.log(`Checking if assets directory exists: ${fs.existsSync(assetsDir)}`);
+    if (fs.existsSync(assetsDir)) {
+      assetFiles = fs.readdirSync(assetsDir);
+    } else {
+      console.log('Assets directory does not exist. Attempting to create it...');
+      fs.mkdirSync(assetsDir, { recursive: true });
+      // Create a basic index.html in the assets directory
+      fs.writeFileSync(path.join(assetsDir, 'index.html'), '<!DOCTYPE html><html><head><title>Competition Ticket</title></head><body><h1>Competition Ticket</h1><p>Welcome to our platform</p></body></html>');
+      assetFiles = fs.readdirSync(assetsDir);
+    }
+  } catch (error) {
+    console.error('Error checking assets directory:', error);
   }
-  res.sendFile(indexPath);
+  console.log('Files in assets dir:', assetFiles.join(', '));
+  
+  // Try each path
+  for (const indexPath of possiblePaths) {
+    console.log(`Checking if ${indexPath} exists...`);
+    if (fs.existsSync(indexPath)) {
+      console.log(`Found index file at: ${indexPath}`);
+      return res.sendFile(indexPath);
+    }
+  }
+  
+  // If no index file found, serve a generated HTML
+  console.log('No index file found. Serving generated HTML.');
+  res.setHeader('Content-Type', 'text/html');
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Competition Ticket</title>
+        <style>
+          body { font-family: sans-serif; margin: 0; padding: 20px; text-align: center; }
+          h1 { color: #333; }
+          pre { background: #f5f5f5; padding: 15px; border-radius: 5px; text-align: left; overflow: auto; }
+        </style>
+      </head>
+      <body>
+        <h1>Competition Ticket</h1>
+        <p>Application is starting up. Server is running but frontend files could not be found.</p>
+        <p>Current directory: ${__dirname}</p>
+        <h2>Debug Information:</h2>
+        <pre>
+Request: ${req.method} ${req.url}
+Server directory: ${__dirname}
+</pre>
+      </body>
+    </html>
+  `);
 });
 
 // Error handling middleware

@@ -1,0 +1,50 @@
+2025-05-10T12:15:17.310451244Z     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-05-10T12:15:17.310453354Z 
+2025-05-10T12:15:17.310455134Z Node.js v22.14.0
+2025-05-10T12:18:14.92328833Z ==> Deploying...
+2025-05-10T12:18:27.178427597Z ==> Running './start.sh'
+2025-05-10T12:18:27.184291065Z Current directory: /opt/render/project/src
+2025-05-10T12:18:27.184303905Z Files in current directory:
+2025-05-10T12:18:27.186198163Z total 1292
+2025-05-10T12:18:27.186206243Z drwxr-sr-x  11 render render   4096 May 10 12:18 .
+2025-05-10T12:18:27.186208143Z drwxr-sr-x   4 render render   4096 May 10 12:17 ..
+2025-05-10T12:18:27.186209893Z drwxr-sr-x   8 render render   4096 May 10 12:17 .git
+2025-05-10T12:18:27.186211423Z -rw-r--r--   1 render render     67 May 10 12:17 .gitignore
+2025-05-10T12:18:27.186212963Z -rw-r--r--   1 render render    676 May 10 12:17 .replit
+2025-05-10T12:18:27.186214483Z drwxr-sr-x   2 render render   4096 May 10 12:17 attached_assets
+2025-05-10T12:18:27.186215963Z -rwxr-xr-x   1 render render  16310 May 10 12:17 build.sh
+2025-05-10T12:18:27.186217453Z drwxr-sr-x   3 render render   4096 May 10 12:17 client
+2025-05-10T12:18:27.186218973Z -rw-r--r--   1 render render    459 May 10 12:17 components.json
+2025-05-10T12:18:27.186220543Z drwxr-sr-x   5 render render   4096 May 10 12:18 dist
+2025-05-10T12:18:27.186222883Z -rw-r--r--   1 render render    325 May 10 12:17 drizzle.config.ts
+2025-05-10T12:18:27.186224483Z -rw-r--r--   1 render render 888454 May 10 12:17 generated-icon.png
+2025-05-10T12:18:27.186225983Z drwxr-sr-x   3 render render   4096 May 10 12:17 migrations
+2025-05-10T12:18:27.186227474Z drwxr-sr-x 278 render render  12288 May 10 12:18 node_modules
+2025-05-10T12:18:27.186231524Z -rw-r--r--   1 render render 321927 May 10 12:17 package-lock.json
+2025-05-10T12:18:27.186233134Z -rw-r--r--   1 render render   3636 May 10 12:17 package.json
+2025-05-10T12:18:27.186235014Z -rw-r--r--   1 render render     80 May 10 12:17 postcss.config.js
+2025-05-10T12:18:27.186236514Z drwxr-sr-x   2 render render   4096 May 10 12:17 server
+2025-05-10T12:18:27.186238054Z drwxr-sr-x   2 render render   4096 May 10 12:17 shared
+2025-05-10T12:18:27.186239574Z -rwxr-xr-x   1 render render    852 May 10 12:17 start.sh
+2025-05-10T12:18:27.186243424Z -rw-r--r--   1 render render   2787 May 10 12:17 tailwind.config.ts
+2025-05-10T12:18:27.186244954Z -rw-r--r--   1 render render    657 May 10 12:17 tsconfig.json
+2025-05-10T12:18:27.186246444Z drwxr-sr-x   2 render render   4096 May 10 12:17 types
+2025-05-10T12:18:27.186247964Z -rw-r--r--   1 render render    894 May 10 12:17 vite.config.ts
+2025-05-10T12:18:27.186401638Z Files in dist directory:
+2025-05-10T12:18:27.187877945Z total 24
+2025-05-10T12:18:27.187884645Z drwxr-sr-x  5 render render 4096 May 10 12:18 .
+2025-05-10T12:18:27.187886465Z drwxr-sr-x 11 render render 4096 May 10 12:18 ..
+2025-05-10T12:18:27.187888285Z drwxr-sr-x  2 render render 4096 May 10 12:18 assets
+2025-05-10T12:18:27.187889865Z drwxr-sr-x  2 render render 4096 May 10 12:18 server
+2025-05-10T12:18:27.187891415Z -rw-r--r--  1 render render 2051 May 10 12:18 server.js
+2025-05-10T12:18:27.187893195Z drwxr-sr-x  2 render render 4096 May 10 12:18 shared
+2025-05-10T12:18:27.18807002Z Using PORT: 10000
+2025-05-10T12:18:27.950077834Z Server running on port 10000
+2025-05-10T12:18:28.535732662Z Error: ENOENT: no such file or directory, stat '/opt/render/project/src/dist/assets/index.html'
+2025-05-10T12:18:35.729418398Z ==> Your service is live 🎉
+2025-05-10T12:18:48.670556148Z Error: ENOENT: no such file or directory, stat '/opt/render/project/src/dist/assets/index.html'
+2025-05-10T12:18:48.776680866Z Error: ENOENT: no such file or directory, stat '/opt/render/project/src/dist/assets/index.html'
+2025-05-10T12:19:19.761384034Z Error: ENOENT: no such file or directory, stat '/opt/render/project/src/dist/assets/index.html'
+2025-05-10T12:19:19.868336213Z Error: ENOENT: no such file or directory, stat '/opt/render/project/src/dist/assets/index.html'
+2025-05-10T12:21:19.62131961Z Error: ENOENT: no such file or directory, stat '/opt/render/project/src/dist/assets/index.html'
+2025-05-10T12:21:19.720222235Z Error: ENOENT: no such file or directory, stat '/opt/render/project/src/dist/assets/index.html'
