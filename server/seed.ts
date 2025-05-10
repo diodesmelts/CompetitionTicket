@@ -21,7 +21,7 @@ async function seed() {
       ticketPrice: "1.00",
       totalTickets: 5000,
       soldTickets: 2453,
-      endDate: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString(), // 15 days from now
+      endDate: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000), // 15 days from now
       featured: true,
     },
     {
@@ -32,7 +32,7 @@ async function seed() {
       ticketPrice: "2.50",
       totalTickets: 2000,
       soldTickets: 876,
-      endDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days from now
+      endDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days from now
       featured: true,
     },
     {
@@ -43,7 +43,7 @@ async function seed() {
       ticketPrice: "5.00",
       totalTickets: 1000,
       soldTickets: 621,
-      endDate: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString(), // 10 days from now
+      endDate: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000), // 10 days from now
       featured: false,
     },
     {
@@ -54,7 +54,7 @@ async function seed() {
       ticketPrice: "25.00",
       totalTickets: 10000,
       soldTickets: 3542,
-      endDate: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toISOString(), // 60 days from now
+      endDate: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000), // 60 days from now
       featured: true,
     },
     {
@@ -65,7 +65,7 @@ async function seed() {
       ticketPrice: "5.00",
       totalTickets: 8000,
       soldTickets: 6235,
-      endDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days from now
+      endDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000), // 5 days from now
       featured: true,
     },
     {
@@ -76,7 +76,7 @@ async function seed() {
       ticketPrice: "2.00",
       totalTickets: 4000,
       soldTickets: 1876,
-      endDate: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000).toISOString(), // 20 days from now
+      endDate: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000), // 20 days from now
       featured: false,
     },
     {
@@ -87,7 +87,7 @@ async function seed() {
       ticketPrice: "10.00",
       totalTickets: 2500,
       soldTickets: 987,
-      endDate: new Date(Date.now() + 25 * 24 * 60 * 60 * 1000).toISOString(), // 25 days from now
+      endDate: new Date(Date.now() + 25 * 24 * 60 * 60 * 1000), // 25 days from now
       featured: true,
     },
     {
@@ -98,15 +98,13 @@ async function seed() {
       ticketPrice: "5.00",
       totalTickets: 5000,
       soldTickets: 3254,
-      endDate: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000).toISOString(), // 45 days from now
+      endDate: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000), // 45 days from now
       featured: false,
     },
   ];
 
   // Insert data
-  for (const competition of competitionsData) {
-    await db.insert(competitions).values(competition);
-  }
+  await db.insert(competitions).values(competitionsData);
 
   console.log(`✅ Added ${competitionsData.length} competitions to the database.`);
 }
