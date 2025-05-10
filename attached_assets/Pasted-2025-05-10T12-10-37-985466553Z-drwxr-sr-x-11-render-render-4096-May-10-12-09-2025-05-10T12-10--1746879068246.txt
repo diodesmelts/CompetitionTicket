@@ -1,0 +1,50 @@
+2025-05-10T12:10:37.985466553Z drwxr-sr-x  11 render render   4096 May 10 12:09 .
+2025-05-10T12:10:37.985469773Z drwxr-sr-x   4 render render   4096 May 10 12:09 ..
+2025-05-10T12:10:37.985472283Z drwxr-sr-x   8 render render   4096 May 10 12:09 .git
+2025-05-10T12:10:37.985474743Z -rw-r--r--   1 render render     67 May 10 12:09 .gitignore
+2025-05-10T12:10:37.985477073Z -rw-r--r--   1 render render    676 May 10 12:09 .replit
+2025-05-10T12:10:37.985479443Z drwxr-sr-x   2 render render   4096 May 10 12:09 attached_assets
+2025-05-10T12:10:37.985481903Z -rwxr-xr-x   1 render render   3692 May 10 12:09 build.sh
+2025-05-10T12:10:37.985484323Z drwxr-sr-x   3 render render   4096 May 10 12:09 client
+2025-05-10T12:10:37.985486643Z -rw-r--r--   1 render render    459 May 10 12:09 components.json
+2025-05-10T12:10:37.985489183Z drwxr-sr-x   4 render render   4096 May 10 12:09 dist
+2025-05-10T12:10:37.985492063Z -rw-r--r--   1 render render    325 May 10 12:09 drizzle.config.ts
+2025-05-10T12:10:37.985494593Z -rw-r--r--   1 render render 888454 May 10 12:09 generated-icon.png
+2025-05-10T12:10:37.985496893Z drwxr-sr-x   3 render render   4096 May 10 12:09 migrations
+2025-05-10T12:10:37.985499063Z drwxr-sr-x 278 render render  12288 May 10 12:09 node_modules
+2025-05-10T12:10:37.985501323Z -rw-r--r--   1 render render 321927 May 10 12:09 package-lock.json
+2025-05-10T12:10:37.985503654Z -rw-r--r--   1 render render   3636 May 10 12:09 package.json
+2025-05-10T12:10:37.985505954Z -rw-r--r--   1 render render     80 May 10 12:09 postcss.config.js
+2025-05-10T12:10:37.985508544Z drwxr-sr-x   2 render render   4096 May 10 12:09 server
+2025-05-10T12:10:37.985510764Z drwxr-sr-x   2 render render   4096 May 10 12:09 shared
+2025-05-10T12:10:37.985512954Z -rwxr-xr-x   1 render render    852 May 10 12:09 start.sh
+2025-05-10T12:10:37.985515164Z -rw-r--r--   1 render render   2787 May 10 12:09 tailwind.config.ts
+2025-05-10T12:10:37.985517474Z -rw-r--r--   1 render render    657 May 10 12:09 tsconfig.json
+2025-05-10T12:10:37.985519944Z drwxr-sr-x   2 render render   4096 May 10 12:09 types
+2025-05-10T12:10:37.985522144Z -rw-r--r--   1 render render    894 May 10 12:09 vite.config.ts
+2025-05-10T12:10:37.98578087Z Files in dist directory:
+2025-05-10T12:10:37.988341243Z total 20
+2025-05-10T12:10:37.988356004Z drwxr-sr-x  4 render render 4096 May 10 12:09 .
+2025-05-10T12:10:37.988358944Z drwxr-sr-x 11 render render 4096 May 10 12:09 ..
+2025-05-10T12:10:37.988361824Z drwxr-sr-x  2 render render 4096 May 10 12:09 server
+2025-05-10T12:10:37.988364264Z -rw-r--r--  1 render render 2051 May 10 12:09 server.js
+2025-05-10T12:10:37.988366804Z drwxr-sr-x  2 render render 4096 May 10 12:09 shared
+2025-05-10T12:10:37.988430015Z Using PORT: 10000
+2025-05-10T12:10:38.071117156Z node:internal/modules/esm/resolve:275
+2025-05-10T12:10:38.071134426Z     throw new ERR_MODULE_NOT_FOUND(
+2025-05-10T12:10:38.071137546Z           ^
+2025-05-10T12:10:38.071139797Z 
+2025-05-10T12:10:38.071142866Z Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/opt/render/project/src/server/routes.js' imported from /opt/render/project/src/dist/server.js
+2025-05-10T12:10:38.071149387Z     at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+2025-05-10T12:10:38.071152117Z     at moduleResolve (node:internal/modules/esm/resolve:860:10)
+2025-05-10T12:10:38.071154527Z     at defaultResolve (node:internal/modules/esm/resolve:984:11)
+2025-05-10T12:10:38.071156867Z     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:685:12)
+2025-05-10T12:10:38.071169177Z     at #cachedDefaultResolve (node:internal/modules/esm/loader:634:25)
+2025-05-10T12:10:38.071171827Z     at ModuleLoader.resolve (node:internal/modules/esm/loader:617:38)
+2025-05-10T12:10:38.071174697Z     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:273:38)
+2025-05-10T12:10:38.071176967Z     at ModuleJob._link (node:internal/modules/esm/module_job:135:49) {
+2025-05-10T12:10:38.071179827Z   code: 'ERR_MODULE_NOT_FOUND',
+2025-05-10T12:10:38.071182107Z   url: 'file:///opt/render/project/src/server/routes.js'
+2025-05-10T12:10:38.071184547Z }
+2025-05-10T12:10:38.071186687Z 
+2025-05-10T12:10:38.071189028Z Node.js v22.14.0

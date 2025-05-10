@@ -7,6 +7,10 @@ npm install
 # Build the frontend
 npx vite build
 
+# Save the frontend build to a temporary location
+mkdir -p temp_frontend
+cp -r dist/* temp_frontend/ 2>/dev/null || :
+
 # Create a production-ready version of the server
 echo "Creating production server build..."
 
@@ -31,8 +35,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Import from local files
-import { registerRoutes } from '../server/routes.js';
-import { storage } from '../server/storage.js';
+import { registerRoutes } from './server/routes.js';
+import { storage } from './server/storage.js';
 
 // Set up connect-pg-simple
 const PgSession = pg(session);
@@ -69,14 +73,14 @@ app.use(session({
 }));
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, './assets')));
 
 // Register API routes
 const server = await registerRoutes(app);
 
 // Send React's index.html for any other request
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+  res.sendFile(path.join(__dirname, './assets/index.html'));
 });
 
 // Error handling middleware
@@ -122,11 +126,18 @@ if [ "$NODE_ENV" != "production" ]; then
   npx tsx server/seed.ts || echo "Error seeding database: $?"
 fi
 
+# Create assets directory and move the frontend build there
+mkdir -p dist/assets
+cp -r temp_frontend/* dist/assets/ 2>/dev/null || :
+rm -rf temp_frontend
+
 # List the contents of the dist directory for verification
 echo "Contents of dist directory:"
 ls -la dist/
 echo "Contents of dist/server directory:"
 ls -la dist/server/
+echo "Contents of dist/assets directory:"
+ls -la dist/assets/
 
 # Exit with success
 echo "Build completed successfully with database setup!"
