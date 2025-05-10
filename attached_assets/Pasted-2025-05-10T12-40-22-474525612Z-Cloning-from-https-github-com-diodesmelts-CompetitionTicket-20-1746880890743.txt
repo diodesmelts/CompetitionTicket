@@ -1,0 +1,27 @@
+2025-05-10T12:40:22.474525612Z ==> Cloning from https://github.com/diodesmelts/CompetitionTicket
+2025-05-10T12:40:22.964300177Z ==> Checking out commit d199984e78bc08122a285285b6228a0d96aafc3e in branch main
+2025-05-10T12:40:24.067555808Z ==> Downloading cache...
+2025-05-10T12:40:36.681130913Z ==> Transferred 172MB in 7s. Extraction took 4s.
+2025-05-10T12:40:40.711905276Z ==> Using Node.js version 22.14.0 (default)
+2025-05-10T12:40:40.739111555Z ==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+2025-05-10T12:40:40.883433456Z ==> Using Bun version 1.1.0 (default)
+2025-05-10T12:40:40.883457876Z ==> Docs on specifying a bun version: https://render.com/docs/bun-version
+2025-05-10T12:40:40.931356409Z ==> Running build command 'node render-build.js'...
+2025-05-10T12:40:40.956029151Z node:internal/modules/cjs/loader:1228
+2025-05-10T12:40:40.956051081Z   throw err;
+2025-05-10T12:40:40.956055232Z   ^
+2025-05-10T12:40:40.956058902Z 
+2025-05-10T12:40:40.956063452Z Error: Cannot find module '/opt/render/project/src/render-build.js'
+2025-05-10T12:40:40.956067252Z     at Function._resolveFilename (node:internal/modules/cjs/loader:1225:15)
+2025-05-10T12:40:40.956071542Z     at Function._load (node:internal/modules/cjs/loader:1055:27)
+2025-05-10T12:40:40.956074982Z     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2025-05-10T12:40:40.956078042Z     at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+2025-05-10T12:40:40.956080812Z     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+2025-05-10T12:40:40.956083102Z     at node:internal/main/run_main_module:36:49 {
+2025-05-10T12:40:40.956085962Z   code: 'MODULE_NOT_FOUND',
+2025-05-10T12:40:40.956088722Z   requireStack: []
+2025-05-10T12:40:40.956090833Z }
+2025-05-10T12:40:40.956092762Z 
+2025-05-10T12:40:40.956094882Z Node.js v22.14.0
+2025-05-10T12:40:40.95955585Z ==> Build failed 😞
+2025-05-10T12:40:40.959577971Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
