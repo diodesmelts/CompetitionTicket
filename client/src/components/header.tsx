@@ -27,17 +27,15 @@ export default function Header() {
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center">
-          <Link href="/">
-            <a className="text-2xl font-bold text-primary">PrizeWin</a>
+          <Link href="/" className="text-2xl font-bold text-primary">
+            PrizeWin
           </Link>
         </div>
         
         <nav className="hidden md:flex space-x-8">
           {navigation.map((item) => (
-            <Link key={item.name} href={item.href}>
-              <a className={`font-medium ${location === item.href ? 'text-primary' : 'text-gray-800 hover:text-primary'}`}>
-                {item.name}
-              </a>
+            <Link key={item.name} href={item.href} className={`font-medium ${location === item.href ? 'text-primary' : 'text-gray-800 hover:text-primary'}`}>
+              {item.name}
             </Link>
           ))}
         </nav>
@@ -65,10 +63,8 @@ export default function Header() {
             <SheetContent>
               <div className="flex flex-col space-y-4 mt-8">
                 {navigation.map((item) => (
-                  <Link key={item.name} href={item.href}>
-                    <a className={`text-lg font-medium ${location === item.href ? 'text-primary' : 'text-gray-800'}`}>
-                      {item.name}
-                    </a>
+                  <Link key={item.name} href={item.href} className={`text-lg font-medium ${location === item.href ? 'text-primary' : 'text-gray-800'}`}>
+                    {item.name}
                   </Link>
                 ))}
               </div>
