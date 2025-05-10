@@ -1,7 +1,8 @@
 import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
+import 'express-session';
 import { storage } from "./storage";
-import { insertCartItemSchema, insertOrderSchema, insertOrderItemSchema } from "@shared/schema";
+import { insertCartItemSchema, insertOrderSchema, insertOrderItemSchema, orders, orderItems } from "@shared/schema";
 import { ZodError } from "zod";
 import Stripe from "stripe";
 import { db } from "./db";
@@ -13,7 +14,7 @@ if (!process.env.STRIPE_SECRET_KEY) {
 }
 
 const stripe = process.env.STRIPE_SECRET_KEY 
-  ? new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2023-10-16" }) 
+  ? new Stripe(process.env.STRIPE_SECRET_KEY) 
   : null;
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -260,7 +261,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Create order in database
       const order = await storage.createOrder({
         sessionId: sessionId,
-        totalAmount: totalAmount / 100, // Convert back from cents to pounds
+        totalAmount: (totalAmount / 100).toString(), // Convert back from cents to pounds and to string for Decimal type
         stripePaymentIntentId: session.id,
         status: 'pending',
       });
@@ -273,7 +274,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
             orderId: order.id,
             competitionId: item.competitionId,
             quantity: item.quantity,
-            ticketPrice: Number(competition?.ticketPrice),
+            ticketPrice: competition?.ticketPrice?.toString() || "0",
           };
         })
       );
@@ -287,77 +288,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/webhook", async (req: Request & { rawBody?: Buffer }, res) => {
-    const signature = req.headers['stripe-signature'];
-    
-    if (!stripe) {
-      return res.status(500).json({ 
-        message: "Stripe is not configured. Please set STRIPE_SECRET_KEY environment variable." 
-      });
-    }
-
-    if (!process.env.STRIPE_WEBHOOK_SECRET) {
-      return res.status(500).json({ 
-        message: "Missing STRIPE_WEBHOOK_SECRET environment variable" 
-      });
-    }
-
-    if (!req.rawBody) {
-      return res.status(400).send('Webhook Error: No raw body available');
-    }
-
-    try {
-      const event = stripe.webhooks.constructEvent(
-        req.rawBody, 
-        signature as string, 
-        process.env.STRIPE_WEBHOOK_SECRET
-      );
-
-      // Handle the checkout.session.completed event
-      if (event.type === 'checkout.session.completed') {
-        const session = event.data.object as Stripe.Checkout.Session;
-        const sessionId = session.metadata?.sessionId;
-        
-        if (sessionId) {
-          // Find the order by Stripe session ID
-          const [order] = await db
-            .select()
-            .from(orders)
-            .where(eq(orders.stripePaymentIntentId, session.id));
-
-          if (order) {
-            // Update order status
-            await storage.updateOrderStatus(order.id, 'completed');
-            
-            // Clear the cart
-            await storage.clearCart(sessionId);
-            
-            // Update competition sold tickets
-            const orderItemsList = await db
-              .select()
-              .from(orderItems)
-              .where(eq(orderItems.orderId, order.id));
-            
-            for (const item of orderItemsList) {
-              await storage.updateCompetitionSoldTickets(
-                item.competitionId, 
-                item.quantity
-              );
-            }
-          }
-        }
-      }
-
-      res.json({ received: true });
-    } catch (error) {
-      console.error('Error handling webhook:', error);
-      res.status(400).send(`Webhook Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
-    }
-  });
-
   app.get("/api/order/:sessionId", async (req, res) => {
     try {
       const stripeSessionId = req.params.sessionId;
+      
+      if (!stripe) {
+        return res.status(500).json({ 
+          message: "Stripe is not configured. Please set STRIPE_SECRET_KEY environment variable." 
+        });
+      }
+      
+      // Check the payment status directly with Stripe
+      const checkoutSession = await stripe.checkout.sessions.retrieve(stripeSessionId);
       
       // Find order by Stripe session ID
       const [order] = await db
@@ -369,13 +311,45 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ message: "Order not found" });
       }
       
-      // Get order items
+      // If payment is successful but order status is still pending, update it
+      if (checkoutSession.payment_status === 'paid' && order.status === 'pending') {
+        // Update order status
+        await storage.updateOrderStatus(order.id, 'completed');
+        
+        // Clear the cart for this session
+        await storage.clearCart(order.sessionId);
+        
+        // Get order items
+        const orderItemsList = await db
+          .select()
+          .from(orderItems)
+          .where(eq(orderItems.orderId, order.id));
+        
+        // Update competition sold tickets
+        for (const item of orderItemsList) {
+          await storage.updateCompetitionSoldTickets(
+            item.competitionId, 
+            item.quantity
+          );
+        }
+        
+        // Refresh the order data after updates
+        const [updatedOrder] = await db
+          .select()
+          .from(orders)
+          .where(eq(orders.id, order.id));
+          
+        if (updatedOrder) {
+          order.status = updatedOrder.status;
+        }
+      }
+      
+      // Get order items with competition details
       const orderItemsList = await db
         .select()
         .from(orderItems)
         .where(eq(orderItems.orderId, order.id));
       
-      // Get competition details for each order item
       const orderItemsWithDetails = await Promise.all(
         orderItemsList.map(async (item) => {
           const competition = await storage.getCompetitionById(item.competitionId);

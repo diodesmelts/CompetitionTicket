@@ -1,21 +1,28 @@
 import express, { type Request, Response, NextFunction } from "express";
+import session from "express-session";
+import connectPgSimple from "connect-pg-simple";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import { connectPgSimpleOptions } from "./db";
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-// Create a raw body buffer for webhook signature verification
+// Set up session middleware
+const PgSession = connectPgSimple(session);
 app.use(
-  express.json({
-    verify: (req: Request & { rawBody?: Buffer }, res, buf) => {
-      const url = req.originalUrl;
-      if (url && url.startsWith('/api/webhook')) {
-        req.rawBody = buf;
-      }
+  session({
+    store: new PgSession(connectPgSimpleOptions),
+    secret: process.env.SESSION_SECRET || "competitions-session-secret",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+      secure: process.env.NODE_ENV === "production",
     },
   })
 );
-app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   const start = Date.now();

@@ -15,7 +15,9 @@ export const competitions = pgTable("competitions", {
   featured: boolean("featured").default(false),
 });
 
-export const insertCompetitionSchema = createInsertSchema(competitions).omit({
+export const insertCompetitionSchema = createInsertSchema(competitions, {
+  ticketPrice: z.string(), // Make sure this is treated as a string
+}).omit({
   id: true,
   soldTickets: true,
 });
@@ -42,7 +44,9 @@ export const orders = pgTable("orders", {
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
-export const insertOrderSchema = createInsertSchema(orders).omit({
+export const insertOrderSchema = createInsertSchema(orders, {
+  totalAmount: z.string(), // Make sure this is treated as a string
+}).omit({
   id: true,
   createdAt: true,
 });
@@ -55,7 +59,9 @@ export const orderItems = pgTable("order_items", {
   ticketPrice: decimal("ticket_price", { precision: 10, scale: 2 }).notNull(),
 });
 
-export const insertOrderItemSchema = createInsertSchema(orderItems).omit({
+export const insertOrderItemSchema = createInsertSchema(orderItems, {
+  ticketPrice: z.string(), // Make sure this is treated as a string
+}).omit({
   id: true,
 });
 
