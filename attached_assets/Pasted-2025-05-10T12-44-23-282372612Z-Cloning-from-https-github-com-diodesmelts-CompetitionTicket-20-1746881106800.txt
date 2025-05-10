@@ -1,0 +1,29 @@
+2025-05-10T12:44:23.282372612Z ==> Cloning from https://github.com/diodesmelts/CompetitionTicket
+2025-05-10T12:44:23.792754599Z ==> Checking out commit bd195fa12606598581b07e98a6c7098c9f23eccd in branch main
+2025-05-10T12:44:24.882879637Z ==> Downloading cache...
+2025-05-10T12:44:36.743621761Z ==> Transferred 172MB in 8s. Extraction took 3s.
+2025-05-10T12:44:42.445880827Z ==> Using Node.js version 20.14.0 via /opt/render/project/src/.node-version
+2025-05-10T12:44:42.473676869Z ==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+2025-05-10T12:44:44.632526207Z ==> Using Bun version 1.1.0 (default)
+2025-05-10T12:44:44.632549877Z ==> Docs on specifying a bun version: https://render.com/docs/bun-version
+2025-05-10T12:44:44.681527174Z ==> Running build command 'npm install && cd client && npm install && npm run build && mkdir -p ../server/public && cp -r dist/* ../server/public/'...
+2025-05-10T12:44:45.87160896Z 
+2025-05-10T12:44:45.871639931Z up to date, audited 376 packages in 1s
+2025-05-10T12:44:45.871649321Z 
+2025-05-10T12:44:45.871652291Z 52 packages are looking for funding
+2025-05-10T12:44:45.871678362Z   run `npm fund` for details
+2025-05-10T12:44:45.873219106Z 
+2025-05-10T12:44:45.873236716Z found 0 vulnerabilities
+2025-05-10T12:44:46.205411604Z 
+2025-05-10T12:44:46.205434874Z up to date, audited 1 package in 253ms
+2025-05-10T12:44:46.206302804Z 
+2025-05-10T12:44:46.206317344Z found 0 vulnerabilities
+2025-05-10T12:44:46.346422421Z 
+2025-05-10T12:44:46.346451802Z > competition-ticket-client@0.0.0 build
+2025-05-10T12:44:46.346457382Z > tsc && vite build
+2025-05-10T12:44:46.346460712Z 
+2025-05-10T12:44:49.321457023Z error TS2688: Cannot find type definition file for 'vite/client'.
+2025-05-10T12:44:49.321478294Z   The file is in the program because:
+2025-05-10T12:44:49.321481284Z     Entry point of type library 'vite/client' specified in compilerOptions
+2025-05-10T12:44:49.369732504Z ==> Build failed 😞
+2025-05-10T12:44:49.369757575Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
