@@ -1,0 +1,100 @@
+2025-05-10T12:14:33.453175543Z Migrations may have failed, that's expected in the build environment
+2025-05-10T12:14:33.461184278Z Contents of dist directory:
+2025-05-10T12:14:33.466202857Z total 24
+2025-05-10T12:14:33.466215998Z drwxr-sr-x  5 render render 4096 May 10 12:14 .
+2025-05-10T12:14:33.466218218Z drwxr-sr-x 11 render render 4096 May 10 12:14 ..
+2025-05-10T12:14:33.466220448Z drwxr-sr-x  2 render render 4096 May 10 12:14 assets
+2025-05-10T12:14:33.466222088Z drwxr-sr-x  2 render render 4096 May 10 12:14 server
+2025-05-10T12:14:33.466224028Z -rw-r--r--  1 render render 2051 May 10 12:14 server.js
+2025-05-10T12:14:33.466225778Z drwxr-sr-x  2 render render 4096 May 10 12:14 shared
+2025-05-10T12:14:33.466520195Z Contents of dist/server directory:
+2025-05-10T12:14:33.468300483Z total 32
+2025-05-10T12:14:33.468336104Z drwxr-sr-x 2 render render  4096 May 10 12:14 .
+2025-05-10T12:14:33.468342194Z drwxr-sr-x 5 render render  4096 May 10 12:14 ..
+2025-05-10T12:14:33.468346184Z -rw-r--r-- 1 render render   643 May 10 12:14 db.js
+2025-05-10T12:14:33.468348824Z -rw-r--r-- 1 render render 11908 May 10 12:14 routes.js
+2025-05-10T12:14:33.468351444Z -rw-r--r-- 1 render render  4667 May 10 12:14 storage.js
+2025-05-10T12:14:33.468573529Z Contents of dist/assets directory:
+2025-05-10T12:14:33.470244016Z total 8
+2025-05-10T12:14:33.470251226Z drwxr-sr-x 2 render render 4096 May 10 12:14 .
+2025-05-10T12:14:33.470253236Z drwxr-sr-x 5 render render 4096 May 10 12:14 ..
+2025-05-10T12:14:33.470484281Z Build completed successfully with database setup!
+2025-05-10T12:14:43.464040396Z ==> Uploading build...
+2025-05-10T12:14:51.918484945Z ==> Uploaded in 5.4s. Compression took 3.1s
+2025-05-10T12:14:51.943128154Z ==> Build successful 🎉
+2025-05-10T12:14:55.245320848Z ==> Deploying...
+2025-05-10T12:15:11.82847781Z -rwxr-xr-x   1 render render    852 May 10 12:13 start.sh
+2025-05-10T12:15:11.82848002Z -rw-r--r--   1 render render   2787 May 10 12:13 tailwind.config.ts
+2025-05-10T12:15:11.82848212Z -rw-r--r--   1 render render    657 May 10 12:13 tsconfig.json
+2025-05-10T12:15:11.8284842Z drwxr-sr-x   2 render render   4096 May 10 12:13 types
+2025-05-10T12:15:11.82848632Z -rw-r--r--   1 render render    894 May 10 12:13 vite.config.ts
+2025-05-10T12:15:11.828620953Z Files in dist directory:
+2025-05-10T12:15:11.830254543Z total 24
+2025-05-10T12:15:11.830265754Z drwxr-sr-x  5 render render 4096 May 10 12:14 .
+2025-05-10T12:15:11.830268614Z drwxr-sr-x 11 render render 4096 May 10 12:14 ..
+2025-05-10T12:15:11.830271074Z drwxr-sr-x  2 render render 4096 May 10 12:14 assets
+2025-05-10T12:15:11.830273734Z drwxr-sr-x  2 render render 4096 May 10 12:14 server
+2025-05-10T12:15:11.830277224Z -rw-r--r--  1 render render 2051 May 10 12:14 server.js
+2025-05-10T12:15:11.830281184Z drwxr-sr-x  2 render render 4096 May 10 12:14 shared
+2025-05-10T12:15:11.830482479Z Using PORT: 10000
+2025-05-10T12:15:11.902277683Z file:///opt/render/project/src/dist/server/routes.js:1
+2025-05-10T12:15:11.902294343Z import type { Express, Request, Response } from "express";
+2025-05-10T12:15:11.902297573Z             ^
+2025-05-10T12:15:11.902300003Z 
+2025-05-10T12:15:11.902303333Z SyntaxError: Unexpected token '{'
+2025-05-10T12:15:11.902306713Z     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-05-10T12:15:11.902309404Z     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-05-10T12:15:11.902312144Z     at #translate (node:internal/modules/esm/loader:468:12)
+2025-05-10T12:15:11.902329314Z     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-05-10T12:15:11.902339554Z 
+2025-05-10T12:15:11.902342194Z Node.js v22.14.0
+2025-05-10T12:15:16.7886842Z ==> Exited with status 1
+2025-05-10T12:15:16.940778322Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+2025-05-10T12:15:17.23460272Z ==> Running './start.sh'
+2025-05-10T12:15:17.240879674Z Current directory: /opt/render/project/src
+2025-05-10T12:15:17.240931526Z Files in current directory:
+2025-05-10T12:15:17.243060728Z total 1280
+2025-05-10T12:15:17.243075798Z drwxr-sr-x  11 render render   4096 May 10 12:14 .
+2025-05-10T12:15:17.243078888Z drwxr-sr-x   4 render render   4096 May 10 12:14 ..
+2025-05-10T12:15:17.243081188Z drwxr-sr-x   8 render render   4096 May 10 12:13 .git
+2025-05-10T12:15:17.243083408Z -rw-r--r--   1 render render     67 May 10 12:13 .gitignore
+2025-05-10T12:15:17.243085519Z -rw-r--r--   1 render render    676 May 10 12:13 .replit
+2025-05-10T12:15:17.243087579Z drwxr-sr-x   2 render render   4096 May 10 12:13 attached_assets
+2025-05-10T12:15:17.243089599Z -rwxr-xr-x   1 render render   4028 May 10 12:13 build.sh
+2025-05-10T12:15:17.243091619Z drwxr-sr-x   3 render render   4096 May 10 12:13 client
+2025-05-10T12:15:17.243093739Z -rw-r--r--   1 render render    459 May 10 12:13 components.json
+2025-05-10T12:15:17.243095769Z drwxr-sr-x   5 render render   4096 May 10 12:14 dist
+2025-05-10T12:15:17.243098599Z -rw-r--r--   1 render render    325 May 10 12:13 drizzle.config.ts
+2025-05-10T12:15:17.243100759Z -rw-r--r--   1 render render 888454 May 10 12:13 generated-icon.png
+2025-05-10T12:15:17.243103219Z drwxr-sr-x   3 render render   4096 May 10 12:13 migrations
+2025-05-10T12:15:17.243105309Z drwxr-sr-x 278 render render  12288 May 10 12:14 node_modules
+2025-05-10T12:15:17.243107359Z -rw-r--r--   1 render render 321927 May 10 12:14 package-lock.json
+2025-05-10T12:15:17.243109429Z -rw-r--r--   1 render render   3636 May 10 12:13 package.json
+2025-05-10T12:15:17.243111489Z -rw-r--r--   1 render render     80 May 10 12:13 postcss.config.js
+2025-05-10T12:15:17.243113589Z drwxr-sr-x   2 render render   4096 May 10 12:13 server
+2025-05-10T12:15:17.243115649Z drwxr-sr-x   2 render render   4096 May 10 12:13 shared
+2025-05-10T12:15:17.24311778Z -rwxr-xr-x   1 render render    852 May 10 12:13 start.sh
+2025-05-10T12:15:17.243119849Z -rw-r--r--   1 render render   2787 May 10 12:13 tailwind.config.ts
+2025-05-10T12:15:17.243121889Z -rw-r--r--   1 render render    657 May 10 12:13 tsconfig.json
+2025-05-10T12:15:17.24312394Z drwxr-sr-x   2 render render   4096 May 10 12:13 types
+2025-05-10T12:15:17.24312601Z -rw-r--r--   1 render render    894 May 10 12:13 vite.config.ts
+2025-05-10T12:15:17.243242423Z Files in dist directory:
+2025-05-10T12:15:17.244931134Z total 24
+2025-05-10T12:15:17.244942124Z drwxr-sr-x  5 render render 4096 May 10 12:14 .
+2025-05-10T12:15:17.244944964Z drwxr-sr-x 11 render render 4096 May 10 12:14 ..
+2025-05-10T12:15:17.244947234Z drwxr-sr-x  2 render render 4096 May 10 12:14 assets
+2025-05-10T12:15:17.244949365Z drwxr-sr-x  2 render render 4096 May 10 12:14 server
+2025-05-10T12:15:17.244951425Z -rw-r--r--  1 render render 2051 May 10 12:14 server.js
+2025-05-10T12:15:17.244953425Z drwxr-sr-x  2 render render 4096 May 10 12:14 shared
+2025-05-10T12:15:17.245134729Z Using PORT: 10000
+2025-05-10T12:15:17.310385392Z file:///opt/render/project/src/dist/server/storage.js:2
+2025-05-10T12:15:17.310408693Z   type Competition, 
+2025-05-10T12:15:17.310412303Z        ^^^^^^^^^^^
+2025-05-10T12:15:17.310415123Z 
+2025-05-10T12:15:17.310418743Z SyntaxError: Unexpected identifier 'Competition'
+2025-05-10T12:15:17.310421953Z     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-05-10T12:15:17.310425873Z     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-05-10T12:15:17.310428763Z     at #translate (node:internal/modules/esm/loader:468:12)
+2025-05-10T12:15:17.310451244Z     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-05-10T12:15:17.310453354Z 
+2025-05-10T12:15:17.310455134Z Node.js v22.14.0
