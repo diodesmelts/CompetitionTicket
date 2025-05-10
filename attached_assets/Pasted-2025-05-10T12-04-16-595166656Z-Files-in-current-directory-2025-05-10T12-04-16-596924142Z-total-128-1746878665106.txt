@@ -1,0 +1,50 @@
+2025-05-10T12:04:16.595166656Z Files in current directory:
+2025-05-10T12:04:16.596924142Z total 1280
+2025-05-10T12:04:16.596936143Z drwxr-sr-x  11 render render   4096 May 10 12:03 .
+2025-05-10T12:04:16.596938103Z drwxr-sr-x   4 render render   4096 May 10 12:03 ..
+2025-05-10T12:04:16.596939723Z drwxr-sr-x   8 render render   4096 May 10 12:03 .git
+2025-05-10T12:04:16.596941294Z -rw-r--r--   1 render render     67 May 10 12:03 .gitignore
+2025-05-10T12:04:16.596942774Z -rw-r--r--   1 render render    676 May 10 12:03 .replit
+2025-05-10T12:04:16.596944304Z drwxr-sr-x   2 render render   4096 May 10 12:03 attached_assets
+2025-05-10T12:04:16.596946134Z -rwxr-xr-x   1 render render    780 May 10 12:03 build.sh
+2025-05-10T12:04:16.596948444Z drwxr-sr-x   3 render render   4096 May 10 12:03 client
+2025-05-10T12:04:16.596951604Z -rw-r--r--   1 render render    459 May 10 12:03 components.json
+2025-05-10T12:04:16.596954175Z drwxr-sr-x   2 render render   4096 May 10 12:03 dist
+2025-05-10T12:04:16.596957595Z -rw-r--r--   1 render render    325 May 10 12:03 drizzle.config.ts
+2025-05-10T12:04:16.596977316Z -rw-r--r--   1 render render 888454 May 10 12:03 generated-icon.png
+2025-05-10T12:04:16.596983107Z drwxr-sr-x   3 render render   4096 May 10 12:03 migrations
+2025-05-10T12:04:16.596985307Z drwxr-sr-x 278 render render  12288 May 10 12:03 node_modules
+2025-05-10T12:04:16.596987357Z -rw-r--r--   1 render render 321927 May 10 12:03 package-lock.json
+2025-05-10T12:04:16.596989387Z -rw-r--r--   1 render render   3636 May 10 12:03 package.json
+2025-05-10T12:04:16.596991667Z -rw-r--r--   1 render render     80 May 10 12:03 postcss.config.js
+2025-05-10T12:04:16.596993978Z drwxr-sr-x   2 render render   4096 May 10 12:03 server
+2025-05-10T12:04:16.596996208Z drwxr-sr-x   2 render render   4096 May 10 12:03 shared
+2025-05-10T12:04:16.596998438Z -rwxr-xr-x   1 render render    572 May 10 12:03 start.sh
+2025-05-10T12:04:16.597001308Z -rw-r--r--   1 render render   2787 May 10 12:03 tailwind.config.ts
+2025-05-10T12:04:16.597004108Z -rw-r--r--   1 render render    657 May 10 12:03 tsconfig.json
+2025-05-10T12:04:16.597006619Z drwxr-sr-x   2 render render   4096 May 10 12:03 types
+2025-05-10T12:04:16.597009149Z -rw-r--r--   1 render render    894 May 10 12:03 vite.config.ts
+2025-05-10T12:04:16.597135749Z Files in dist directory:
+2025-05-10T12:04:16.598667468Z total 32
+2025-05-10T12:04:16.598678748Z drwxr-sr-x  2 render render  4096 May 10 12:03 .
+2025-05-10T12:04:16.598681449Z drwxr-sr-x 11 render render  4096 May 10 12:03 ..
+2025-05-10T12:04:16.598683119Z -rw-r--r--  1 render render 21048 May 10 12:03 index.js
+2025-05-10T12:04:16.598861143Z Using PORT: 10000
+2025-05-10T12:04:16.659409917Z node:internal/modules/package_json_reader:268
+2025-05-10T12:04:16.659438679Z   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2025-05-10T12:04:16.659443059Z         ^
+2025-05-10T12:04:16.659445279Z 
+2025-05-10T12:04:16.65945118Z Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /opt/render/project/src/dist/index.js
+2025-05-10T12:04:16.65945625Z     at Object.getPackageJSONURL (node:internal/modules/package_json_reader:268:9)
+2025-05-10T12:04:16.65945949Z     at packageResolve (node:internal/modules/esm/resolve:768:81)
+2025-05-10T12:04:16.659462001Z     at moduleResolve (node:internal/modules/esm/resolve:854:18)
+2025-05-10T12:04:16.659464861Z     at defaultResolve (node:internal/modules/esm/resolve:984:11)
+2025-05-10T12:04:16.659467511Z     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:685:12)
+2025-05-10T12:04:16.659486492Z     at #cachedDefaultResolve (node:internal/modules/esm/loader:634:25)
+2025-05-10T12:04:16.659489283Z     at ModuleLoader.resolve (node:internal/modules/esm/loader:617:38)
+2025-05-10T12:04:16.659492173Z     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:273:38)
+2025-05-10T12:04:16.659494643Z     at ModuleJob._link (node:internal/modules/esm/module_job:135:49) {
+2025-05-10T12:04:16.659497733Z   code: 'ERR_MODULE_NOT_FOUND'
+2025-05-10T12:04:16.659500174Z }
+2025-05-10T12:04:16.659502544Z 
+2025-05-10T12:04:16.659505214Z Node.js v22.14.0

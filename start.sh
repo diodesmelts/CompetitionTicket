@@ -21,5 +21,11 @@ else
   echo "Using PORT: $PORT"
 fi
 
-# Start the application
-node dist/index.js
+# Set SESSION_SECRET to a secure value if not already set
+if [ -z "$SESSION_SECRET" ]; then
+  echo "SESSION_SECRET not set, using a default value (this is not recommended for production)"
+  export SESSION_SECRET="competitions_app_secret_$(date +%s)"
+fi
+
+# Start the application with the new server file
+node dist/server.js
